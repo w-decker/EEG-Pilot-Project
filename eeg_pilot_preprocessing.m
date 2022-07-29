@@ -2,10 +2,10 @@ eeglabclear
 eeglab;
 %% set up file and folders
 % establish working directory 
-inputdir = '/Volumes/juschnei/lendlab/projects/EEG_Rhyme/data/raw_dir/';
-workdir = '/Volumes/juschnei/lendlab/projects/EEG_Rhyme/analysis/wkdir/';
-txtdir = '/Volumes/juschnei/lendlab/projects/EEG_Rhyme/analysis/txtdir/';
-erpdir = '/Volumes/juschnei/lendlab/projects/EEG_Rhyme/analysis/erpdir/';
+inputdir = '';
+workdir = '';
+txtdir = '';
+erpdir = '';
 
 
 % establish parameters
@@ -29,7 +29,7 @@ for s=1:numsubjects
     [ALLEEG, EEG, CURRENTSET, ALLCOM] = eeglab;
     eeglab('redraw');
 
-    EEG = pop_loadbv(inputdir filesep subject filesep 'rhyme_task' filesep [subject '.vhdr'], [], []);
+    EEG = pop_loadbv(inputdir [subject '.vhdr'], [], []);
     [ALLEEG, EEG, CURRENTSET] = pop_newset(ALLEEG, EEG, 0,'setname',subject,'gui','off'); 
     EEG = eeg_checkset( EEG );
 
